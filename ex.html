@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokédex</title>
+    <link rel="stylesheet" href="ex.css">
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+    <header class="header">
+        <img src="icons/pokeball.png">
+        <h1>Pokédex</h1>
+    </header>
+    
+    <div class="search-container">
+        <input type="text" placeholder= "Search" class="search-bar">
+        <button class="filter-btn"><img src="icons/text_format.png"></button>
+    </div>
+    
+    <div class="pokedex-container">
+        <div class="pokemon-card" v-for="i in 12">
+            <p class="pokemon-number">#999</p>
+            <div class="pokemon-image"></div>
+            <p class="pokemon-name">Pokémon Name</p>
+        </div>
+    </div>
+</body>
+</html>

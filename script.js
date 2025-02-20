@@ -1,17 +1,15 @@
-fetch("https://icanhazdadjoke.com/", {
-    headers: {
-        "Accept": "application/json"
-    }
-})
+fetch("https://pokeapi.co/api/v2/pokemon")
 
     .then((response) => response.json())
     .then((data) => {
 
 
-        let bodyElm = document.querySelector("body");
+        let bodyElm = document.createElement("body");
 
-        let listElm = document.querySelector("ul");
-        listElm.classList.add("info");
+        let headerElm = document.querySelector("header");
+
+        let sectionElm = document.querySelector("section");
+        sectionElm.classList.add("search-container");
 
         listElm.innerHTML = `
         ${data.employees
@@ -54,11 +52,23 @@ fetch("/data/pokemon.json")
 
 document.querySelector("main").append(sectionElm)
 
-
-// function createCard(pokemon) {
-//     return `
-//         <article>
-//             <h2>${pokemon.name}</h2>
-//         </article>
-//     `
-// } 
+/* 
+<body>
+    <header class="header">
+        <img src="icons/pokeball.png">
+        <h1>Pokédex</h1>
+    </header>
+    
+    <section class="search-container">
+        <input type="text" placeholder= "Search" class="search-bar">
+        <button class="filter-btn"><img src="icons/text_format.png"></button>
+    </section>
+    
+    <section class="pokedex-container">
+        <div class="pokemon-card" v-for="i in 12">
+            <p class="pokemon-number">#999</p>
+            <div class="pokemon-image"></div>
+            <p class="pokemon-name">Pokémon Name</p>
+        </div>
+    </section>
+</body> */
