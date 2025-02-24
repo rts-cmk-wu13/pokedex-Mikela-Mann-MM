@@ -9,16 +9,16 @@
     box-sizing: border-box;  
 }
 
-/* img {
+img {
     width: 100%;
     max-width: 100%;
     display: block;
     height: auto;
-} */
+} 
 
 body {
     margin: 0;
-    background-color: var(--primary);
+    background-color: var(--color-primary);
     font-family: Poppins, sans-serif;
     width: 1440px;
 }
@@ -62,11 +62,11 @@ Color Styles
   /* Grayscale */
 
 :root {
-    --color-dark: #212121;
-    --color-medium: #666666;
-    --color-light: #E0E0E0;
-    --color-background: #EFEFEF;
-    --color-white: #FFFFFF;
+    --grayscale-dark: #212121;
+    --grayscale-medium: #666666;
+    --grayscale-light: #E0E0E0;
+    --grayscale-background: #EFEFEF;
+    --grayscale-white: #FFFFFF;
 
 }
 
