@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
         })
         .then(pokemonList => {
             divElm.innerHTML = pokemonList.map(pokemon => {
-                let id = pokemon.id;
+                let id = String(pokemon.id).padStart(3, "0"); // Sørger for at id altid er 3 cifre
                 return `
                     <article class="pokemon-card" data-id="${id}">
                         <p class="pokemon-number">#${id}</p>
@@ -52,6 +52,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     </article>
                 `;
             }).join("");
+
 
             document.querySelectorAll(".pokemon-card").forEach(card => {
                 card.addEventListener("click", () => {
@@ -77,6 +78,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 const pokemonName = card.querySelector(".pokemon-name").textContent.toLowerCase();
                 card.style.display = pokemonName.includes(searchTerm) ? "block" : "none";
             });
+
         }
     });
 });

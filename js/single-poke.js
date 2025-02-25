@@ -2,20 +2,23 @@ document.addEventListener("DOMContentLoaded", () => {
     document.body.innerHTML = ""; // Rydder body
 
     const urlParams = new URLSearchParams(window.location.search);
-    const pokemonId = urlParams.get("id") || 1; // Standard til ID 1, hvis ingen angives
+    const pokemonId = parseInt(urlParams.get("id"), 10); // Konverter til tal
 
     let container = document.createElement("div");
     container.classList.add("container");
     document.body.appendChild(container);
 
+    // Hent basis Pokémon-data
     fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonId}`)
         .then(response => response.json())
         .then(pokemon => {
+            let formattedId = String(pokemon.id).padStart(3, "0"); // Gør ID 3-cifret
+
             let headerElm = document.createElement("header");
             headerElm.innerHTML = `
                 <a href="index.html" class="back"><img src="/icons/arrow_back.png"></a>
                 <h1>${capitalize(pokemon.name)}</h1>
-                <span class="pokemon-number">#${pokemon.id}</span>
+                <span class="pokemon-number">#${formattedId}</span>
             `;
             container.appendChild(headerElm);
 
@@ -50,24 +53,15 @@ document.addEventListener("DOMContentLoaded", () => {
             `;
             container.appendChild(aboutSection);
 
-        /* fetch(`https://pokeapi.co/api/v2/pokemon-species/${pokemonId}`)
-        .then(response => response.json())
-        .then(pokemon => {
-            let infoSection = document.createElement("section");
-            infoSection.classList.add("info");
-            infoSection.innerHTML = `<p>${pokemon.species}</p>
-            `;
-            container.appendChild(infoSection);  */
-
             let statsSection = document.createElement("section");
             statsSection.classList.add("stats");
             statsSection.innerHTML = `
                 <h2>Base Stats</h2>
                 ${pokemon.stats.map(stat => `
                     <div class="stat">
-                        <span class="statname">${stat.stat.name.toUpperCase()}</span>
+                    <p class="stats-headline">${stat.stat.name == "attack" ? "ATK" : stat.stat.name == "defense" ? "DFS" : stat.stat.name == "special-attack" ? "SATK" : stat.stat.name == "special-defense" ? "SDEF" : stat.stat.name == "speed" ? "SPD" : stat.stat.name.toUpperCase()}</p>
+                    <span class="stats-numbers">${stat.base_stat}</span>
                         <div class="bar"><div class="fill" style="width: ${stat.base_stat / 2}%;"></div></div>
-                        <span>${stat.base_stat}</span>
                     </div>
                 `).join("")}
             `;
@@ -80,17 +74,39 @@ document.addEventListener("DOMContentLoaded", () => {
             // Sæt baggrundsfarven for hovedcontaineren
             container.style.backgroundColor = typeColor;
 
-            // Sæt farve på Base Stats og About-sektion
-            let aboutHeader = aboutSection.querySelector("h2");
-            let statsHeader = statsSection.querySelector("h2");
+            // Sæt farve på "fill"-Statssektionens fill i bars
+            let statsFill = statsSection.querySelectorAll(".fill");
+            statsFill.forEach(fill => {
+                fill.style.backgroundColor = typeColor;
+            });
 
+            // Sæt baggrundsfarve på type
+            let divSection = divSection.querySelectorAll(".types");
+            divSection.forEach(type => {
+                type.style.backgroundColor = typeColor;
+            });
+
+            // Sæt farve på "About"-sektionens overskrift
+            let aboutHeader = aboutSection.querySelector("h2");
             if (aboutHeader) aboutHeader.style.color = typeColor;
+
+            // Sæt farve på "Stats"-sektionens overskrift
+            let statsHeader = statsSection.querySelector("h2");
             if (statsHeader) statsHeader.style.color = typeColor;
 
-            // Sæt farve på stats-barer
-            document.querySelectorAll(".fill").forEach(bar => {
-                bar.style.backgroundColor = typeColor;
-            });
+            // Hent Pokémon-species data for mere information
+            return fetch(`https://pokeapi.co/api/v2/pokemon-species/${pokemonId}`);
+        })
+        .then(response => response.json())
+        .then(species => {
+            let infoSection = document.createElement("section");
+            infoSection.classList.add("info");
+
+            // Hent en beskrivelse af Pokémonen (den første beskrivelse på engelsk)
+            let description = species.flavor_text_entries.find(entry => entry.language.name === "en")?.flavor_text || "No description available.";
+
+            infoSection.innerHTML = `<p>${description}</p>`;
+            container.appendChild(infoSection);
         })
         .catch(error => console.error("Error fetching Pokémon data:", error));
 
@@ -98,4 +114,3 @@ document.addEventListener("DOMContentLoaded", () => {
         return str.charAt(0).toUpperCase() + str.slice(1);
     }
 });
-
