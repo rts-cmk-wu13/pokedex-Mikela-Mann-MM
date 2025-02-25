@@ -14,16 +14,27 @@ header {
     align-items: center;
 }
 
-header h1 {
+header h1, .pokemon-number {
 color: var(--grayscale-white);
+}
+
+.pokemon-number {
+    font-weight: 700;
 }
 
 .pokemon-image {
     width: 100%;
     height: 200px;
-    -background: gray;
+    justify-content: center;
+    align-items: center;
     margin: 20px 0;
     border-radius: 10px;
+}
+
+.details-container {
+    background-color: var(--grayscale-white);
+    border-radius: 8px;
+    padding: 56px 20px 20px 20px;
 }
 
 .types {
@@ -31,12 +42,12 @@ color: var(--grayscale-white);
     justify-content: center;
     gap: 10px;
     color: var(--grayscale-white);
+    
 }
 
 .type {
-   
     padding: 5px 10px;
-    border-radius: 5px;
+    border-radius: 10px;
 }
 
 .about h2, .stats h2 {
