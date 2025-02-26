@@ -1,4 +1,3 @@
-
 .container {
     max-width: 400px;
     background: white;
@@ -6,6 +5,7 @@
     border-radius: 10px;
     padding: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    position: relative;
 }
 
 header {
@@ -15,20 +15,49 @@ header {
 }
 
 header h1, .pokemon-number {
-color: var(--grayscale-white);
+    color: var(--grayscale-white);
 }
 
 .pokemon-number {
     font-weight: 700;
 }
 
-.pokemon-image {
-    width: 100%;
-    height: 200px;
-    justify-content: center;
+.image-container {
+    display: flex;
     align-items: center;
+    justify-content: center;
+    position: relative;
+    height: 200px;
     margin: 20px 0;
+}
+
+.pokemon-image img {
+    max-width: 100%;
+    height: auto;
     border-radius: 10px;
+}
+
+.navigation {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+
+.navigation a {
+    pointer-events: all;
+    background: rgba(255, 255, 255, 0.7);
+    padding: 5px;
+    border-radius: 50%;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.navigation a img {
+    width: 30px;
+    height: 30px;
 }
 
 .details-container {
@@ -42,7 +71,6 @@ color: var(--grayscale-white);
     justify-content: center;
     gap: 10px;
     color: var(--grayscale-white);
-    
 }
 
 .type {
@@ -84,5 +112,5 @@ color: var(--grayscale-white);
 
 .fill {
     height: 100%;
-    -background: #4CAF50;
+    background: #4CAF50;
 }
