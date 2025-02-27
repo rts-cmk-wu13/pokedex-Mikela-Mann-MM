@@ -23,18 +23,14 @@ header h1, .pokemon-number {
 }
 
 .image-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    height: 200px;
-    margin: 20px 0;
+   margin-top: 24px;
 }
 
 .pokemon-image img {
     max-width: 100%;
-    height: auto;
-    border-radius: 10px;
+    width: 200px;
+    height: 200px;
+    margin: 0 auto;
 }
 
 .navigation {
@@ -85,6 +81,7 @@ header h1, .pokemon-number {
 
 .info {
     display: flex;
+    flex-direction: row;
     justify-content: space-around;
     margin-bottom: 15px;
 }
@@ -112,5 +109,5 @@ header h1, .pokemon-number {
 
 .fill {
     height: 100%;
-    background: #4CAF50;
+    -background: #4CAF50;
 }

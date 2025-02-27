@@ -25,7 +25,6 @@ body {
 
 body {
     margin: 0;
-    background-color: var(--color-primary);
     font-family: Poppins, sans-serif;
     max-width: 97.77%;
     border-radius: 8px;

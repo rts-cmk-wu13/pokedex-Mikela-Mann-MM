@@ -38,10 +38,10 @@ document.addEventListener("DOMContentLoaded", () => {
     sortCard.innerHTML = `
         <div class="sort-by-options">
             <p>Sort by:</p>
-            <div class="sort-options">
-            <button class="sort-by-id">Number</button>
-            <button class="sort-by-name">Name</button>
-            </div>
+            <form class="sort-options" action="/html/details.html">
+            <input type="radio"  class="sort-by-id">Number
+            <input type="radio" class="sort-by-name">Name
+            </form>
         </div>
     `;
     document.body.appendChild(sortCard);
