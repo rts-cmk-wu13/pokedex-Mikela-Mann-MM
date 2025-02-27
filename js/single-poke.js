@@ -366,3 +366,5 @@ document.addEventListener("DOMContentLoaded", () => {
         return statMap[stat] || stat.toUpperCase();
     }
 });
+ 
+

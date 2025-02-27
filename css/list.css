@@ -52,7 +52,7 @@
 .pokedex-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 2%;
+    gap: 0.5rem;
     padding: 2em 0.8em;
     background-color: var(--grayscale-white);
     border-radius: 8px;
@@ -64,7 +64,6 @@
 
 .pokemon-card {
     background-color: var(--color-white);
-    width: 33%;
     height: auto;
     border-radius: 8px;
     box-shadow: 0 1px 3px 1px rgba(0, 0, 0, 0.20);
@@ -73,21 +72,28 @@
 
 .pokemon-number {
     color: var(--grayscale-medium);
-    font-size: 14px;
+    font-size: 8px;
+    padding-top: 4px;
+    padding-right: 8px;
+    line-height: 12px;
     text-align: right;
 }
 
 .pokemon-image {
-    height: 72px;
-    width: 72px;
+    left: 16px;
+    top: 16px;
     border-radius: 5px;
     margin: 10px 0;
 }
 
 .pokemon-name {
-    font-weight: bold;
-    background-color: var(--background);
-    width: 104px;
-    height: 44px;
+    font-weight: 400;
+    font-size: 10px;
+    background-color: var(--grayscale-background);
+    width: 100%;
+    padding-top: 24px;
+    padding-left: 8px;
+    padding-right: 8px;
+    padding-bottom: 4px;
     border-radius: 7px;
 }
