@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
     sectionElm.appendChild(divElm);
     mainElm.appendChild(sectionElm);
 
-    // POP-UP SORTING CARD
+    // Pop-up 
     let sortCard = document.createElement("div");
     sortCard.classList.add("sort-card");
     sortCard.innerHTML = `
@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", () => {
             </form>
         </div>
     `;
-    document.body.appendChild(sortCard);
+    document.body.appendChild(sortCard); 
 
     const filterBtn = document.querySelector(".filter-btn");
     filterBtn.addEventListener("click", () => {
